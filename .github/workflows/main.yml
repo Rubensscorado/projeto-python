@@ -1,0 +1,21 @@
+name: CI Python
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+      
+      - name: Configurar Python 3
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3'
+          
+      - name: Instalar pytest
+        run: pip install pytest
+        
+      - name: Executar testes
+        run: pytest
